@@ -88,3 +88,13 @@ print(f"Игрок: {player2.nickname}, Уровень: {player2.level}")
 print(
     f"Оружие: {player2.weapon.name}, Урон: {player2.weapon.damage}, Режим стрельбы: {player2.weapon.fire_mode.type}"
 )
+
+# 1.3.
+player2.weapon = player1.weapon
+
+print(f"Количество патронов игрока 1: {player1.weapon.ammo}")
+print(f"Количество патронов игрока 2: {player1.weapon.ammo}")
+player1.weapon.ammo -= 5
+
+print(f"Количество патронов игрока 1: {player1.weapon.ammo}")
+print(f"Количество патронов игрока 2: {player2.weapon.ammo}")
