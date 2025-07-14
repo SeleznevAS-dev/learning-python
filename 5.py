@@ -1,5 +1,6 @@
 # 5.1.
 
+
 class Weapon:
     def __init__(self, name, damage, max_ammo):
         self.__name = name
@@ -9,7 +10,7 @@ class Weapon:
         self.__durability = 100
         self.__max_durability = 100
 
-    def Fire(self):
+    def __fire(self):
         if self.__ammo <= 0:
             print("Нет патронов для выстрела.")
             return 0
@@ -21,16 +22,25 @@ class Weapon:
         self.__durability -= 2
         return self.__damage
 
-    def Reload(self):
+    def fire(self):
+        return self.__fire()
+
+    def __reload(self):
         print(f"Патроны до перезарядки: {self.__ammo}.")
         self.__ammo = self.__max_ammo
         print(f"Патроны после перезарядки: {self.__ammo}.")
         return self.__ammo
 
-    def Repair(self):
+    def reload(self):
+        return self.__reload()
+
+    def __repair(self):
         print(f"Прочность до ремонта: {self.__durability}.")
         self.__durability = self.__max_durability
         print(f"Прочность после ремонта: {self.__durability}.")
+        
+    def repair(self):
+        return self.__repair()
 
 
 class Player:
@@ -41,8 +51,8 @@ class Player:
         self.__additional_ammo_magazine = 5
         self.__weapon_repair_kit = 1
 
-    def Shoot(self, target):
-        damage = self.__weapon.Fire()
+    def __shoot(self, target):
+        damage = self.__weapon.fire()
         target.__health -= damage
         if damage > 0:
             print(
@@ -52,19 +62,28 @@ class Player:
                 print(f"Игрок {target.__nickname} был убит.")
                 target.__health = 0
 
-    def Reload_weapon(self):
+    def shoot(self, target):
+        self.__shoot(target)
+
+    def __reload_weapon(self):
         if self.__additional_ammo_magazine > 0:
-            self.__weapon.Reload()
+            self.__weapon.reload()
             self.__additional_ammo_magazine -= 1
         else:
             print("Нет дополнительных магазинов для перезарядки.")
 
-    def Repair_weapon(self):
+    def reload_weapon(self):
+        self.__reload_weapon()
+
+    def __repair_weapon(self):
         if self.__weapon_repair_kit > 0:
-            self.__weapon.Repair()
+            self.__weapon.repair()
             self.__weapon_repair_kit -= 1
         else:
             print("Нет комплектов для ремонта оружия.")
+
+    def repair_weapon(self):
+        self.__repair_weapon()
 
 
 sniper_rifle = Weapon("Sniper rifle", 60, 10)
@@ -73,8 +92,8 @@ player1 = Player("Player", sniper_rifle)
 
 player2 = Player("NewPlayer", Weapon("AK-47", 35, 30))
 
-player1.Shoot(target=player2)
-player2.Shoot(target=player1)
-player1.Shoot(target=player2)
-player1.Reload_weapon()
-player1.Repair_weapon()
+player1.shoot(target=player2)
+player2.shoot(target=player1)
+player1.shoot(target=player2)
+player1.reload_weapon()
+player1.repair_weapon()
