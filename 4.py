@@ -124,3 +124,45 @@ laptop = Laptop("Apple", "MacBook Pro", "macOS", zero_battery)
 laptop.turn_on()
 
 # 4.2. Есть два вида полиморфизма: полиморфизм подтипов и параметрический полиморфизм. Первый заключается в том, что при вызове метода у переданного класса, родителем которого является указанный класс, будет вызван именно переопределенный метод дочернего класса. Второй заключается в том, что при передаче в функцию дочернего класса (при этом указание типизацией родительского класса), код будет одинаково работать для всех классов (дочерних или родительского).
+
+# 4.3.
+import random
+
+
+class Animal:
+    def foo(self):
+        pass
+
+
+class Cat(Animal):
+    def foo(self):
+        print("Кошка мурлычет")
+
+
+class Bird(Animal):
+    def foo(self):
+        print("Птица поет")
+
+
+def do_something_with_animal(animal: Animal):
+    animal.foo()
+
+
+def fill_animal_list(animal_list: list[Animal]) -> list[Animal]:
+    for i in range(len(animal_list)):
+        animal_list[i] = None
+    for i in range(500):
+        if random.randint(0, 1) == 0:
+            animal_list.append(Cat())
+        else:
+            animal_list.append(Bird())
+    return animal_list
+
+
+animals = []
+animals = fill_animal_list(animals)
+
+for animal in animals:
+    animal.foo()
+
+# Выводится результат функции foo случайного животного из списка. Так получается, потому что в список было случайно добавлено одно из двух животных, и, так как они имеют один и тот же родительский класс и одно и то же название функции, корректно выводится результат функции foo, соответствующий животному, которое было случайно добавлено.
