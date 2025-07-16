@@ -1,4 +1,4 @@
-# 5.1.
+# 3.1.
 
 
 class Weapon:
@@ -99,7 +99,7 @@ player1.reload_weapon()
 player1.repair_weapon()
 
 
-# 5.2.
+# 3.2.
 class Animal:
     def __init__(self, age, weight, speed, color):
         self.age = age
