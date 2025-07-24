@@ -47,6 +47,7 @@ def create_cats():
             self.freq = freq
 
     path = "working_with_files/cats.txt"
+    cats = []
     with open(path, "rt", encoding="UTF-8") as f:
         s = f.readline()
         while s != "":
@@ -55,20 +56,23 @@ def create_cats():
                 for i in range(len(attrs)):
                     if i == 0:
                         name = str(attrs[i])
+                        if name == "":
+                            raise ValueError
                     if i == 1:
                         weight = float(attrs[i])
-                        if weight <= 0 or weight >= 50:
+                        if weight == "" or weight <= 0 or weight >= 50:
                             raise ValueError
                     if i == 2:
                         freq = int(attrs[i])
-                        if freq <= 0 or freq >= 1000:
+                        if freq == "" or freq <= 0 or freq >= 1000:
                             raise ValueError
                 assert i == 2
                 cat = Cat(name, weight, freq)
-                print(cat.name, cat.weight, cat.freq)
+                cats.append(cat)
             except AssertionError:
                 print("Количество атрибутов не равно 3")
             except ValueError:
                 print("Заданы некорректные параметры")
 
             s = f.readline()
+    return cats
