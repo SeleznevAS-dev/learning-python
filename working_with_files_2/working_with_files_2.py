@@ -29,3 +29,17 @@ def dirs_and_files(path, ext, flag):
             files.extend(new_files)
 
     return dirs, files
+
+
+# 4.2.
+import os
+
+
+def delete_dir(path):
+    for root, dirs, files in os.walk(path):
+        if dirs:
+            return False
+        for file in files:
+            os.remove(os.path.join(root, file))
+        os.rmdir(root)
+        return True
