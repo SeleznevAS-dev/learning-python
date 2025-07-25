@@ -43,3 +43,6 @@ def delete_dir(path):
             os.remove(os.path.join(root, file))
         os.rmdir(root)
         return True
+
+
+# 4.3. Изучил дополнительно материал по работе с файлами.
