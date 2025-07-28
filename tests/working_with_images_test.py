@@ -6,7 +6,7 @@ from PIL import Image
 
 class WorkingWithFilesTests(unittest.TestCase):
     # 3.1.
-    def test_regression_create_files(self):
+    def test_regression_convert_image(self):
         test_dir = os.path.join(os.getcwd(), "working_with_images")
 
         test_png_path = os.path.join(test_dir, "test_image.png")
