@@ -1,23 +1,28 @@
 # 1.
 import random
 
-keys = []
-while len(keys) < 100:
-    num = random.randint(1, 100)
-    if num not in keys:
-        keys.append(num)
+def task1_add_keys():
+    keys = []
+    while len(keys) < 100:
+        num = random.randint(1, 100)
+        if num not in keys:
+            keys.append(num)
+    return keys
 
-dictionary = {}
-for i in range(len(keys)):
-    index_str = str(random.randint(1, 100))
-    dictionary[keys[i]] = index_str
+def task1_fill_dictionary(keys):
+    dictionary = {}
+    for i in range(len(keys)):
+        index_str = str(random.randint(1, 100))
+        dictionary[keys[i]] = index_str
 
-for i in dictionary.keys():
-    print(dictionary[i])
+    for i in dictionary.keys():
+        print(dictionary[i])
+    return dictionary
 
-for key in list(dictionary.keys()):
-    del dictionary[key]
-
+def task1_delete_dictionary(dictionary):
+    for key in list(dictionary.keys()):
+        del dictionary[key]
+    return dictionary
 # 2.
 import random
 
