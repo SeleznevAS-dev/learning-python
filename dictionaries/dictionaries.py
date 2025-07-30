@@ -40,6 +40,6 @@ def n_values(arr, n):
             dct[i] += 1
     ans = []
     for key, value in dct.items():
-        if value == n:
+        if value >= n:
             ans.append(key)
     return ans
