@@ -1,6 +1,7 @@
 # 1.
 import random
 
+
 def task1_add_keys():
     keys = []
     while len(keys) < 100:
@@ -8,6 +9,7 @@ def task1_add_keys():
         if num not in keys:
             keys.append(num)
     return keys
+
 
 def task1_fill_dictionary(keys):
     dictionary = {}
@@ -19,10 +21,13 @@ def task1_fill_dictionary(keys):
         print(dictionary[i])
     return dictionary
 
+
 def task1_delete_dictionary(dictionary):
     for key in list(dictionary.keys()):
         del dictionary[key]
     return dictionary
+
+
 # 2.
 import random
 
@@ -34,8 +39,8 @@ for i in range(100):
 def n_values(arr, n):
     dct = {}
     for i in arr:
-        if i not in dct:
-            dct[i] = 0
+        if i not in dct.keys():
+            dct[i] = 1
         else:
             dct[i] += 1
     ans = []
