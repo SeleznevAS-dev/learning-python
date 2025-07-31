@@ -1,11 +1,14 @@
+"Solution of task 'working with image' topic."
+
 # 3.1.
 
 from glob import glob
 import os
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 def image_converter(ext1, ext2):
+    "Function for converting from ext1 to ext2."
     root_dir = os.path.join(os.getcwd(), "working_with_images")
     founded_files = glob(os.path.join(root_dir, f"*{ext1}"))
     for file in founded_files:
@@ -16,12 +19,8 @@ def image_converter(ext1, ext2):
 
 
 # 3.2.
-from glob import glob
-import os
-from PIL import Image, ImageDraw
-
-
 def image_converter_modified(ext1, ext2):
+    "Modified function for converting files"
     root_dir = os.path.join(os.getcwd(), "working_with_images")
     founded_files = glob(os.path.join(root_dir, f"*{ext1}"))
     for file in founded_files:
